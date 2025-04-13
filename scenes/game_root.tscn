@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcrn7f2wvo66n"]
+
+[ext_resource type="PackedScene" uid="uid://bh83odopscibt" path="res://ui/games_menu.tscn" id="1_78s5d"]
+[ext_resource type="Script" uid="uid://bvsuvex7am7ei" path="res://scenes/game_container.gd" id="1_ni5ms"]
+[ext_resource type="Script" uid="uid://ds3jd0f5oxfin" path="res://scenes/game_root.gd" id="1_uebra"]
+
+[node name="GameRoot" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_uebra")
+
+[node name="GameContainer" type="Node" parent="."]
+script = ExtResource("1_ni5ms")
+
+[node name="MenuRoot" parent="GameContainer" instance=ExtResource("1_78s5d")]
+unique_name_in_owner = true
+process_mode = 3
+offset_right = 1280.0
+offset_bottom = 720.0

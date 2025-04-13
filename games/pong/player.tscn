@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3p1jf7jl575"]
+
+[ext_resource type="Script" uid="uid://cglaf7m6oo47x" path="res://components/movement/inputs/player_input.gd" id="1_ryvwh"]
+[ext_resource type="Script" uid="uid://rn6ovldgah10" path="res://components/movement/move_component.gd" id="2_yeih4"]
+[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_statistics.gd" id="3_t0y4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g513r"]
+size = Vector2(15, 75)
+
+[sub_resource type="Resource" id="Resource_ude62"]
+script = ExtResource("3_t0y4l")
+max_speed = 300.0
+acceleration = 300.0
+deceleration = 300.0
+metadata/_custom_type_script = "uid://cdug1evux3a02"
+
+[node name="Paddle" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_g513r")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -37.5
+offset_right = 7.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerMovementComponent" type="Node" parent="." node_paths=PackedStringArray("movemement_component")]
+script = ExtResource("1_ryvwh")
+movemement_component = NodePath("../MovementComponent")
+metadata/_custom_type_script = "uid://cglaf7m6oo47x"
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("2_yeih4")
+values = SubResource("Resource_ude62")
+metadata/_custom_type_script = "uid://rn6ovldgah10"

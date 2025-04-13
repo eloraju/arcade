@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh83odopscibt"]
+
+[ext_resource type="PackedScene" uid="uid://dhif64r67fjrx" path="res://ui/game_card.tscn" id="1_qo8ck"]
+[ext_resource type="Theme" uid="uid://c0fivlhpsa7ur" path="res://resources/default_theme.tres" id="2_8d21w"]
+[ext_resource type="Texture2D" uid="uid://d2b3e5b7o67sa" path="res://assets/images/card_images/pång.png" id="3_8d21w"]
+[ext_resource type="PackedScene" uid="uid://dytkqgmvoenfx" path="res://games/pong/pong.tscn" id="4_u1ree"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_by65a"]
+bg_color = Color(0.503, 0.315, 0.367, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="MenuRoot" type="MarginContainer"]
+z_index = 1000
+z_as_relative = false
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+
+[node name="GameCard" parent="Panel/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("1_qo8ck")]
+layout_mode = 2
+theme = ExtResource("2_8d21w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_by65a")
+game_name = "PÅNG"
+game_image = ExtResource("3_8d21w")
+game_scene = ExtResource("4_u1ree")
+card_bg_style = SubResource("StyleBoxFlat_by65a")

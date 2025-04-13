@@ -1,0 +1,181 @@
+[gd_scene load_steps=12 format=3 uid="uid://dytkqgmvoenfx"]
+
+[ext_resource type="Script" uid="uid://d4ham3lwysevu" path="res://games/pong/pong.gd" id="1_ude62"]
+[ext_resource type="Script" uid="uid://lfl0jllgv0bl" path="res://games/pong/manager.gd" id="2_g513r"]
+[ext_resource type="PackedScene" uid="uid://8cner7m6v3sw" path="res://games/pong/paddle.tscn" id="3_6lexf"]
+[ext_resource type="AudioStream" uid="uid://oth0iva2mfxn" path="res://games/pong/jump1.ogg" id="3_40b3o"]
+[ext_resource type="PackedScene" uid="uid://7qmlmjmjr0ei" path="res://games/pong/wall.tscn" id="3_ec46q"]
+[ext_resource type="PackedScene" uid="uid://dd6hko0i8uu27" path="res://games/pong/ball.tscn" id="3_ude62"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ude62"]
+font_size = 45
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lexf"]
+size = Vector2(20, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ude62"]
+size = Vector2(1280, 130)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6lexf"]
+font_size = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40b3o"]
+bg_color = Color(0.217511, 0.514191, 0.437233, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="Pong" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_ude62")
+
+[node name="GameContainer" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="Background" type="ColorRect" parent="GameContainer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Manager" type="Node" parent="GameContainer" node_paths=PackedStringArray("left_score_label", "right_score_label", "ball", "left_goal", "right_goal", "left_paddle", "right_paddle")]
+unique_name_in_owner = true
+script = ExtResource("2_g513r")
+left_score_label = NodePath("../LeftPlayerScore")
+right_score_label = NodePath("../RightPlayerScore")
+ball = NodePath("../Ball")
+left_goal = NodePath("../LeftGoal")
+right_goal = NodePath("../RighGoal")
+left_paddle = NodePath("../LP")
+right_paddle = NodePath("../RP")
+
+[node name="Score" type="AudioStreamPlayer" parent="GameContainer/Manager"]
+stream = ExtResource("3_40b3o")
+
+[node name="LP" parent="GameContainer" instance=ExtResource("3_6lexf")]
+position = Vector2(80, 360)
+
+[node name="RP" parent="GameContainer" instance=ExtResource("3_6lexf")]
+position = Vector2(1200, 360)
+
+[node name="LeftPlayerScore" type="Label" parent="GameContainer"]
+offset_left = 105.0
+offset_top = 10.0
+offset_right = 156.0
+offset_bottom = 73.0
+text = "0"
+label_settings = SubResource("LabelSettings_ude62")
+
+[node name="RightPlayerScore" type="Label" parent="GameContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1122.0
+offset_top = 10.0
+offset_right = 1173.0
+offset_bottom = 73.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_ude62")
+
+[node name="Ball" parent="GameContainer" instance=ExtResource("3_ude62")]
+position = Vector2(640, 359)
+start_speed = 200.0
+
+[node name="Top" parent="GameContainer" instance=ExtResource("3_ec46q")]
+position = Vector2(75, 75)
+
+[node name="Bottom" parent="GameContainer" instance=ExtResource("3_ec46q")]
+position = Vector2(75, 645)
+
+[node name="LeftGoal" type="Area2D" parent="GameContainer"]
+position = Vector2(60, 361)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/LeftGoal"]
+shape = SubResource("RectangleShape2D_6lexf")
+
+[node name="RighGoal" type="Area2D" parent="GameContainer"]
+position = Vector2(1220, 360)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/RighGoal"]
+shape = SubResource("RectangleShape2D_6lexf")
+
+[node name="TopStop" type="Area2D" parent="GameContainer"]
+position = Vector2(640, 84)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/TopStop"]
+shape = SubResource("RectangleShape2D_ude62")
+
+[node name="BotStop" type="Area2D" parent="GameContainer"]
+position = Vector2(640, 655)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/BotStop"]
+shape = SubResource("RectangleShape2D_ude62")
+
+[node name="Label" type="Label" parent="GameContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 570.0
+offset_top = 3.0
+offset_right = 701.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PÅNG"
+label_settings = SubResource("LabelSettings_6lexf")
+
+[node name="Menu" type="Node" parent="."]
+process_mode = 3
+
+[node name="MenuContainer" type="PanelContainer" parent="Menu"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Menu/MenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_40b3o")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MenuContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RP_AI" type="CheckBox" parent="Menu/MenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Right player as AI"
+
+[node name="LP_AI" type="CheckBox" parent="Menu/MenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Left player as AI"
+
+[node name="Restart" type="Button" parent="Menu/MenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart"

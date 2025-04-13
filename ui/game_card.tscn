@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhif64r67fjrx"]
+
+[ext_resource type="Script" uid="uid://rhaxhmlx0aib" path="res://ui/game_card.gd" id="1_d6r0t"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d6r0t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u3dmx"]
+font_size = 25
+
+[node name="GameCard" type="PanelContainer"]
+offset_right = 230.0
+offset_bottom = 231.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_d6r0t")
+game_image = SubResource("PlaceholderTexture2D_d6r0t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ImageMargins" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/ImageMargins"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 113)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("PlaceholderTexture2D_d6r0t")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game Name"
+label_settings = SubResource("LabelSettings_u3dmx")
+
+[node name="ButtonMargins" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="Play" type="Button" parent="VBoxContainer/ButtonMargins"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+disabled = true
+text = "Play"
