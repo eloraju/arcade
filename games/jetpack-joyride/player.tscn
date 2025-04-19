@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://bngykeumy1wr7"]
+
+[ext_resource type="Script" uid="uid://moi6ewa6026p" path="res://games/jetpack-joyride/player.gd" id="1_a46rm"]
+[ext_resource type="Script" uid="uid://can3r5eeppewm" path="res://resources/gravity_resource.gd" id="2_llqtv"]
+[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_values.gd" id="3_0qjsh"]
+[ext_resource type="Texture2D" uid="uid://b8fswenx5c48o" path="res://games/jetpack-joyride/particle.png" id="4_0qjsh"]
+[ext_resource type="Script" uid="uid://dxjbj02m56x1v" path="res://components/movement/gravity_move_component.gd" id="4_a46rm"]
+[ext_resource type="Texture2D" uid="uid://0iknbjykgm7s" path="res://games/jetpack-joyride/player.png" id="4_llqtv"]
+
+[sub_resource type="Gradient" id="Gradient_a46rm"]
+offsets = PackedFloat32Array(0.698965, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.421731, 0.421731, 0.421731, 1)
+
+[sub_resource type="Curve" id="Curve_g8sey"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.0555058, -0.66186), 0.0, 0.0, 0, 0, Vector2(0.38675, 0.431726), 0.0, 0.0, 0, 0, Vector2(0.663384, -0.656001), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8sey"]
+size = Vector2(20, 158)
+
+[sub_resource type="Resource" id="Resource_a46rm"]
+script = ExtResource("2_llqtv")
+strength = 20.0
+direction = Vector2(0, 1)
+metadata/_custom_type_script = "uid://can3r5eeppewm"
+
+[sub_resource type="Resource" id="Resource_g8sey"]
+script = ExtResource("3_0qjsh")
+max_speed = 100.0
+acceleration = 45.0
+deceleration = 10.0
+metadata/_custom_type_script = "uid://cdug1evux3a02"
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("movement")]
+scale = Vector2(5, 5)
+script = ExtResource("1_a46rm")
+movement = NodePath("GravityMoveController")
+
+[node name="Gunpack" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="Stream" type="CPUParticles2D" parent="Gunpack"]
+position = Vector2(0, 9)
+amount = 48
+texture = ExtResource("4_0qjsh")
+lifetime = 0.7
+randomness = 0.24
+lifetime_randomness = 0.63
+direction = Vector2(0, 1)
+spread = 10.0
+initial_velocity_min = 65.0
+initial_velocity_max = 65.0
+scale_amount_min = 3.8
+scale_amount_max = 4.2
+color = Color(0.260829, 0.453674, 0.773354, 1)
+color_ramp = SubResource("Gradient_a46rm")
+hue_variation_min = -0.04
+hue_variation_max = 0.04
+hue_variation_curve = SubResource("Curve_g8sey")
+
+[node name="StreamHitbox" type="CollisionShape2D" parent="Gunpack"]
+position = Vector2(0, 87)
+shape = SubResource("RectangleShape2D_g8sey")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_llqtv")
+
+[node name="GravityMoveController" type="Node2D" parent="."]
+script = ExtResource("4_a46rm")
+gravity_values = SubResource("Resource_a46rm")
+values = SubResource("Resource_g8sey")
+metadata/_custom_type_script = "uid://dxjbj02m56x1v"

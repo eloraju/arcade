@@ -1,7 +1,7 @@
 extends Node2D
 class_name PongPaddle
 
-@export var movement_component: MovementComponent
+@export var movement_component: MovementController
 
 @onready var area2d: Area2D = $Area2D
 

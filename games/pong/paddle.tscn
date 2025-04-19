@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://8cner7m6v3sw"]
 
 [ext_resource type="Script" uid="uid://cdbkgqjkxcimh" path="res://games/pong/paddle.gd" id="1_rklot"]
-[ext_resource type="Script" uid="uid://rn6ovldgah10" path="res://components/movement/move_component.gd" id="2_4wwb3"]
-[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_statistics.gd" id="3_1lj2n"]
+[ext_resource type="Script" uid="uid://rn6ovldgah10" path="res://components/movement/move_controller.gd" id="2_4wwb3"]
+[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_values.gd" id="3_1lj2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g513r"]
 size = Vector2(17, 75)

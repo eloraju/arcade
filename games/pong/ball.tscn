@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dd6hko0i8uu27"]
 
-[ext_resource type="Script" uid="uid://rn6ovldgah10" path="res://components/movement/move_component.gd" id="1_000tm"]
+[ext_resource type="Script" uid="uid://rn6ovldgah10" path="res://components/movement/move_controller.gd" id="1_000tm"]
 [ext_resource type="Script" uid="uid://dmhf1lcdgltqd" path="res://games/pong/ball.gd" id="1_2qoj3"]
 [ext_resource type="AudioStream" uid="uid://fwk4r6hnpfwv" path="res://games/pong/hurt2.ogg" id="2_coxa7"]
-[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_statistics.gd" id="3_biyl1"]
+[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_values.gd" id="3_biyl1"]
 [ext_resource type="AudioStream" uid="uid://cw3jl2ob3v1uh" path="res://games/pong/hurt1.ogg" id="3_lar5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edley"]

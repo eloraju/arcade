@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3p1jf7jl575"]
 
 [ext_resource type="Script" uid="uid://cglaf7m6oo47x" path="res://components/movement/inputs/player_input.gd" id="1_ryvwh"]
-[ext_resource type="Script" uid="uid://rn6ovldgah10" path="res://components/movement/move_component.gd" id="2_yeih4"]
-[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_statistics.gd" id="3_t0y4l"]
+[ext_resource type="Script" uid="uid://rn6ovldgah10" path="res://components/movement/move_controller.gd" id="2_yeih4"]
+[ext_resource type="Script" uid="uid://cdug1evux3a02" path="res://resources/movement_values.gd" id="3_t0y4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g513r"]
 size = Vector2(15, 75)

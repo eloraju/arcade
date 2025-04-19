@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://chu5n7wn008i2"]
+[gd_scene load_steps=3 format=3 uid="uid://chu5n7wn008i2"]
 
-[node name="Jetpackjoyride" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://bngykeumy1wr7" path="res://games/jetpack-joyride/player.tscn" id="1_psgn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psgn3"]
+size = Vector2(500, 30.5)
+
+[node name="Jetpackjoyride" type="Node"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(341, 571)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(250, 5.25)
+shape = SubResource("RectangleShape2D_psgn3")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 500.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239347, 0.239347, 0.239347, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_psgn3")]
+position = Vector2(595, 130)

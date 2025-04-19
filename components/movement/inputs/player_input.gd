@@ -1,7 +1,7 @@
 extends Node
 class_name PlayerMovementComponent
 
-@export var movemement_component: MovementComponent
+@export var movemement_component: MovementController
 
 func _process(_delta):
 	var direction = Vector2.ZERO

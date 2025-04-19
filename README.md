@@ -38,11 +38,18 @@ Pressing `Esc` toggles the game menu and pressing `Tab` in a game toggles the ga
 
 ### TODO
 
-- [ ] Everything
+- [ ] Create a more robust MovementController
+- [ ] Add obstacles
+- [ ] Add enemies
+- [ ] Add a component for hitboxes and hurtboxes
 
 ### Devlog
 
-If there's going to be one, it's going to live here
+Early on I decided to try and make my life as hard as possible by trying to create as much of the functionalities by
+myself as possible. Now I've been trying to figure out how to create a "simple" yet extendable implementation of moving and colliding.
+This has been going on for multiple days now and I've been pingpongin between using CharacterBody2D and rolling up my own system. I've
+rewritten the movement logic so many times by now that I'll just have to commit something. I can't stand to look at the `new file`
+tag git keeps giving me...
 
 ## Global todo
 

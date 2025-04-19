@@ -3,7 +3,7 @@ class_name PongBall
 
 @export var start_speed: float = 400.0
 @export var speed_increase: float = 50.0
-@export var movemement_component: MovementComponent
+@export var movemement_component: MovementController
 
 @onready var area2d: Area2D = $Area2D
 @onready var wall_hit: AudioStreamPlayer = $WallHit
