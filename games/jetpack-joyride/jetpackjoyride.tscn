@@ -29,4 +29,5 @@ grow_vertical = 2
 color = Color(0.239347, 0.239347, 0.239347, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_psgn3")]
-position = Vector2(595, 130)
+position = Vector2(476, 374)
+scale = Vector2(1, 1)

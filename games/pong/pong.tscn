@@ -104,7 +104,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/RighGoal"]
 shape = SubResource("RectangleShape2D_6lexf")
 
-[node name="TopStop" type="Area2D" parent="GameContainer"]
+[node name="TopStop" type="StaticBody2D" parent="GameContainer"]
 position = Vector2(640, 84)
 collision_layer = 8
 collision_mask = 0
@@ -112,7 +112,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContainer/TopStop"]
 shape = SubResource("RectangleShape2D_ude62")
 
-[node name="BotStop" type="Area2D" parent="GameContainer"]
+[node name="BotStop" type="StaticBody2D" parent="GameContainer"]
 position = Vector2(640, 655)
 collision_layer = 8
 collision_mask = 0

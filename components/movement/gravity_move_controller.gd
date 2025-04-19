@@ -5,12 +5,15 @@ class_name GravityMoveController
 
 var grounded: bool = false
 
-func apply_gravity(delta: float) -> void:
+func apply_gravity() -> void:
 	if !grounded:
-		velocity += gravity_values.get_gravity_vector() * delta
+		move_vector += gravity_values.get_gravity_vector()
 	elif velocity.y > 0:
-			velocity.y = 0
+		velocity.y = 0
 
 func move(target: Node2D, delta: float) -> void:
-	apply_gravity(delta)
+	if target is CharacterBody2D:
+		grounded = target.is_on_floor()
+
+	apply_gravity()
 	super.move(target, delta)

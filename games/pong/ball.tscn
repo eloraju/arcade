@@ -9,16 +9,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edley"]
 size = Vector2(16, 16)
 
-[sub_resource type="Resource" id="Resource_4byu6"]
+[sub_resource type="Resource" id="Resource_coxa7"]
 script = ExtResource("3_biyl1")
-max_speed = 400.0
-acceleration = 400.0
-deceleration = 400.0
+max_speed = 100.0
+acceleration = 100.0
+deceleration = 100.0
 metadata/_custom_type_script = "uid://cdug1evux3a02"
 
 [node name="Ball" type="Node2D" node_paths=PackedStringArray("movemement_component")]
 script = ExtResource("1_2qoj3")
-movemement_component = NodePath("MovementComponent")
+movemement_component = NodePath("MovementController")
 
 [node name="PaddleHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_coxa7")
@@ -46,8 +46,7 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_edley")
 
-[node name="MovementComponent" type="Node" parent="."]
+[node name="MovementController" type="Node2D" parent="."]
 script = ExtResource("1_000tm")
-values = SubResource("Resource_4byu6")
-debug = true
+values = SubResource("Resource_coxa7")
 metadata/_custom_type_script = "uid://rn6ovldgah10"

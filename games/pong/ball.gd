@@ -1,6 +1,11 @@
 extends Node2D
 class_name PongBall
 
+@export var debug: bool = false:
+	set(val):
+		debug = val
+		movemement_component.debug = val
+
 @export var start_speed: float = 400.0
 @export var speed_increase: float = 50.0
 @export var movemement_component: MovementController
@@ -13,15 +18,17 @@ var direction: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	area2d.area_entered.connect(_on_area_entered)
+	area2d.area_entered.connect(_on_collision)
+	area2d.body_entered.connect(_on_collision)
 	randomize_direction()
+	movemement_component.values.max_speed = start_speed
 
 func randomize_direction():
 	direction = Vector2(1, 0).rotated(randf_range(0, PI / 3))
 	direction = direction if randi() % 2 == 0 else direction * -1
 	movemement_component.move_in_direction(direction)
 
-func _on_area_entered(area: Area2D):
+func _on_collision(area: CollisionObject2D):
 	# check environment collision
 	var parent_name = area.get_parent().name
 
@@ -44,7 +51,7 @@ func _on_area_entered(area: Area2D):
 	
 	movemement_component.move_in_direction(direction)
 
-func calculate_player_bounce(area: Area2D):
+func calculate_player_bounce(area: CollisionObject2D) -> Vector2:
 	# take a vector that from the middle of the paddle to the middle of the ball
 	# and make that that be the new bounce vector
 	var new_direction = global_position - area.global_position
@@ -55,5 +62,7 @@ func reset():
 	global_position = Vector2(690, 360)
 	# Randomize the direction
 	movemement_component.values.max_speed = start_speed
-	movemement_component.values.acceleration = start_speed
 	randomize_direction()
+
+func _physics_process(delta):
+	movemement_component.move(self, delta)

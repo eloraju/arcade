@@ -38,7 +38,7 @@ Pressing `Esc` toggles the game menu and pressing `Tab` in a game toggles the ga
 
 ### TODO
 
-- [ ] Create a more robust MovementController
+- [x] Create a ~~more robust~~ somewhat working MovementController
 - [ ] Add obstacles
 - [ ] Add enemies
 - [ ] Add a component for hitboxes and hurtboxes
@@ -50,6 +50,10 @@ myself as possible. Now I've been trying to figure out how to create a "simple" 
 This has been going on for multiple days now and I've been pingpongin between using CharacterBody2D and rolling up my own system. I've
 rewritten the movement logic so many times by now that I'll just have to commit something. I can't stand to look at the `new file`
 tag git keeps giving me...
+
+Some time later... I decided to give up trying to hand roll collision handling and succumbed to use Character and Static bodies for now.
+I had to refactor Pong to work with the new system but hopefully I can now start to actually work on the jetpack joyride clone instead of
+banging my head against the wall :sweat_smile:
 
 ## Global todo
 
